@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ColorGen : MonoBehaviour {
     public  ParticleSystem head;
+    private bool mutate = false;
+
     public float hSliderValueR ;
     public float hSliderValueG ;
     public float hSliderValueB ;
@@ -43,6 +45,8 @@ public class ColorGen : MonoBehaviour {
         hSliderValueB = GUI.HorizontalSlider(new Rect(95, 105, 100, 30), hSliderValueB, 0.0F, 1.0F);
         hSliderValueA = GUI.HorizontalSlider(new Rect(95, 135, 100, 30), hSliderValueA, 0.0F, 1.0F);
 
+        mutate = GUILayout.Toggle(mutate, "Allow Mutation");
+
 
         if (GUI.Button(new Rect(20, 205, 50, 30), "Min"))
             {
@@ -65,6 +69,24 @@ public class ColorGen : MonoBehaviour {
             Debug.Log("AI NOT DONE");
 
         }
+
+    }
+    void AI()
+    {
+        if (mutate == true)
+        {
+            //mutation function
+        }
+        else
+        {
+
+
+        }
+
+    }
+
+    void mutation()
+    {
 
     }
 }
