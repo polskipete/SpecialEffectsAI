@@ -54,6 +54,7 @@
      <Compile Include="Assets\Scripts\ChangeColor.cs" />
      <Compile Include="Assets\Scripts\ColorGen.cs" />
      <Compile Include="Assets\Scripts\Rotate.cs" />
+     <None Include="Assets\Save\saveColor.txt" />
  <Reference Include="Facebook.Unity.Settings">
  <HintPath>C:/Users/pete8/Desktop/SpecialEffectsAI/Library/FacebookSDK/Facebook.Unity.Settings.dll</HintPath>
  </Reference>

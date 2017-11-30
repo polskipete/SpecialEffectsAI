@@ -1,12 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
+using System.IO;
 
 public class ColorGen : MonoBehaviour {
     public  ParticleSystem head;
+
     private bool mutate = false;
     private float random;
     private int addOrminus;
+    public int saveNum;
 
     public float hSliderValueR ;
     public float hSliderValueG ;
@@ -66,25 +70,34 @@ public class ColorGen : MonoBehaviour {
                 hSliderValueBMin = GUI.HorizontalSlider(new Rect(95, 105, 100, 30), hSliderValueB, 0.0F, 1.0F);
                 hSliderValueAMin = GUI.HorizontalSlider(new Rect(95, 135, 100, 30), hSliderValueA, 0.0F, 1.0F);
             }
+        if (GUI.Button(new Rect(60, 300, 65, 30), "Save"))
+        {
+            saveColor();
+        }
         if (GUI.Button(new Rect(60, 255, 65, 30), "Generate"))
             {
             Debug.Log("AI NOT DONE");
-            AI();
+            if (mutate == true)
+            {
+               
+                AI();
+                mutation();
+            }
+            else
+            {
+                AI();
+
+            }
+          
+
+
 
         }
 
     }
     void AI()
     {
-        if (mutate == true)
-        {
-            mutation();
-        }
-        else
-        {
-
-
-        }
+       
 
     }
 
@@ -92,7 +105,7 @@ public class ColorGen : MonoBehaviour {
     {
         random = Random.Range(1, 101);
         //Debug.Log("Mute Func::" +random);
-        if (random <= 15)
+        if (random <= 20)
          
         {
 
@@ -246,6 +259,22 @@ public class ColorGen : MonoBehaviour {
             }
             
         }
+    }
+
+
+    
+   void saveColor()
+    {
+        string path = "Assets/Save/saveColor.txt";
+
+        //Write some text to the test.txt file
+        StreamWriter writer = new StreamWriter(path, true);
+        writer.WriteLine("RED:"+hSliderValueR+"GREEN"+ hSliderValueG+"BLUE"+ hSliderValueB+"ALPHA"+ hSliderValueA);
+        writer.Close();
+
+      
+
+        
     }
 }
     
