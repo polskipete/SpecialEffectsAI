@@ -5,6 +5,8 @@ using UnityEngine;
 public class ColorGen : MonoBehaviour {
     public  ParticleSystem head;
     private bool mutate = false;
+    private float random;
+    private int addOrminus;
 
     public float hSliderValueR ;
     public float hSliderValueG ;
@@ -67,6 +69,7 @@ public class ColorGen : MonoBehaviour {
         if (GUI.Button(new Rect(60, 255, 65, 30), "Generate"))
             {
             Debug.Log("AI NOT DONE");
+            AI();
 
         }
 
@@ -75,7 +78,7 @@ public class ColorGen : MonoBehaviour {
     {
         if (mutate == true)
         {
-            //mutation function
+            mutation();
         }
         else
         {
@@ -87,7 +90,162 @@ public class ColorGen : MonoBehaviour {
 
     void mutation()
     {
+        random = Random.Range(1, 101);
+        //Debug.Log("Mute Func::" +random);
+        if (random <= 15)
+         
+        {
 
+            if (hSliderValueR <= 0)
+            {
+                hSliderValueR = Random.Range(.05f, 1.0f);
+            }
+            if (hSliderValueG <= 0)
+            {
+                hSliderValueG = Random.Range(.05f, 1.0f);
+            }
+            if (hSliderValueB <= 0)
+            {
+                hSliderValueB = Random.Range(.05f, 1.0f);
+            }
+            if (hSliderValueA <= 0)
+            {
+                hSliderValueA = Random.Range(.05f, 1.0f);
+            }
+
+
+            // Debug.Log("Rando True");
+            random = Random.Range(1,9);
+            Debug.Log("Random::"+random);
+            if (random == 1)
+            {
+                random = Random.Range(0.05f, .1f);
+                addOrminus = Random.Range(1,101);
+                //Debug.Log("Add or Minus::"+addOrminus);
+
+                if (addOrminus <= 50 && hSliderValueR != 0)
+                {
+                    hSliderValueR = hSliderValueR - random;
+                   // Debug.Log("M:Red:::"+random);
+                }
+                else if (addOrminus >= 50 && hSliderValueR != 1)
+                {
+                    hSliderValueR = hSliderValueR + random;
+                    //Debug.Log("A:Red:::"+random);
+                }
+                return;
+            }
+            else if (random == 2)
+            {
+                random = Random.Range(0.05f, .1f);
+                addOrminus = Random.Range(1, 101);
+               // Debug.Log("Add or Minus::"+addOrminus);
+
+                if (addOrminus <= 50)
+                {
+                    hSliderValueG = hSliderValueG - random;
+                   // Debug.Log("M:Green:::"+random);
+                }
+                else if (addOrminus >= 50)
+                {
+                    hSliderValueG = hSliderValueR + random;
+                   // Debug.Log("A:Green:::"+random);
+                }
+                return;
+            }
+            else if (random == 3)
+            {
+                random = Random.Range(0.05f, .1f);
+                addOrminus = Random.Range(1, 101);
+
+                if (addOrminus <= 50 )
+                {
+                    hSliderValueB = hSliderValueB - random;
+                  //  Debug.Log("M:Blue:::" + random);
+                }
+                else if (addOrminus >= 50)
+                {
+                    hSliderValueB = hSliderValueB + random;
+                   // Debug.Log("A:Blue:::" + random);
+                }
+                return;
+            }
+            else if (random == 4)
+            {
+                random = Random.Range(0.01f, .3f);
+                addOrminus = Random.Range(1, 101);
+
+                if (addOrminus <= 50)
+                {
+                    hSliderValueA = hSliderValueA - random;
+                   
+                }
+                else if (addOrminus >= 50)
+                {
+                    hSliderValueA = hSliderValueA + random;
+                    
+                }
+                return;
+            }
+            else if (random == 5)
+            {
+                random = Random.Range(0.01f, .3f);
+                addOrminus = Random.Range(0, 1);
+
+                if (addOrminus <= 50)
+                {
+                    hSliderValueR = hSliderValueR - random;
+                    hSliderValueB = hSliderValueB - random;
+                }
+                else
+                {
+                    hSliderValueR = hSliderValueR + random;
+                    hSliderValueB = hSliderValueB + random;
+                }
+                return;
+            }
+            else if (random == 6)
+            {
+                random = Random.Range(0.01f, .3f);
+                addOrminus = Random.Range(0, 1);
+
+                if (addOrminus <= 50)
+                {
+                    hSliderValueR = hSliderValueR - random;
+                    hSliderValueG = hSliderValueG - random;
+                }
+                else
+                {
+                    hSliderValueR = hSliderValueR + random;
+                    hSliderValueG = hSliderValueG + random;
+                }
+                return;
+            }
+            else if (random == 7)
+            {
+                addOrminus = Random.Range(0, 1);
+
+                if (addOrminus <= 50)
+                {
+                    hSliderValueR = hSliderValueR - random;
+                    hSliderValueA = hSliderValueA - random;
+                }
+                else
+                {
+                    hSliderValueR = hSliderValueR + random;
+                    hSliderValueA = hSliderValueA + random;
+                }
+                return;
+            }
+            else if (random == 8)
+            {
+                random = Random.Range(0.01f, .3f);
+                hSliderValueB = hSliderValueR - random;
+                hSliderValueG = hSliderValueR - random;
+                return;
+            }
+            
+        }
     }
 }
     
