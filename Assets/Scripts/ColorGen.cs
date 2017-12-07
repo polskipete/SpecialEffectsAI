@@ -32,15 +32,15 @@ public class ColorGen : MonoBehaviour {
     public float hSliderValueB ;
     public float hSliderValueA ;
 
-    public float hSliderValueRMax;
-    public float hSliderValueGMax;
-    public float hSliderValueBMax;
-    public float hSliderValueAMax;
+    public float hSliderValueRMax=1;
+    public float hSliderValueGMax=1;
+    public float hSliderValueBMax=1;
+    public float hSliderValueAMax=1;
 
-    public float hSliderValueRMin;
-    public float hSliderValueGMin;
-    public float hSliderValueBMin;
-    public float hSliderValueAMin;
+    public float hSliderValueRMin=0;
+    public float hSliderValueGMin=0;
+    public float hSliderValueBMin=0;
+    public float hSliderValueAMin=0;
 
     public float hSliderValueRSum=0;
     public float hSliderValueGSum=0;
@@ -104,20 +104,44 @@ public class ColorGen : MonoBehaviour {
 
         if (GUI.Button(new Rect(20, 205, 50, 30), "Min"))
             {
-                hSliderValueRMin= GUI.HorizontalSlider(new Rect(95, 45, 100, 30), hSliderValueR, 0.0F, 1.0F);
-                hSliderValueGMin = GUI.HorizontalSlider(new Rect(95, 75, 100, 30), hSliderValueG, 0.0F, 1.0F);
-                hSliderValueBMin = GUI.HorizontalSlider(new Rect(95, 105, 100, 30), hSliderValueB, 0.0F, 1.0F);
-                hSliderValueAMin = GUI.HorizontalSlider(new Rect(95, 135, 100, 30), hSliderValueA, 0.0F, 1.0F);
-                Debug.Log(hSliderValueRMin);
+            if (hSliderValueR < hSliderValueRMax)
+            {
+                hSliderValueRMin = hSliderValueR;
+            }
+            if (hSliderValueG < hSliderValueGMax)
+            {
+                hSliderValueGMin = hSliderValueG;
+            }
+            if (hSliderValueB < hSliderValueBMax)
+            {
+                hSliderValueBMin = hSliderValueB;
+            }
+            if (hSliderValueA < hSliderValueAMax)
+            {
+                hSliderValueAMin = hSliderValueA;
+            }
+            Debug.Log(hSliderValueRMin);
                 Debug.Log(hSliderValueBMin);
             }
         if (GUI.Button(new Rect(120, 205, 50, 30), "Max"))
             {
-                hSliderValueRMin = GUI.HorizontalSlider(new Rect(95, 45, 100, 30), hSliderValueR, 0.0F, 1.0F);
-                hSliderValueGMin = GUI.HorizontalSlider(new Rect(95, 75, 100, 30), hSliderValueG, 0.0F, 1.0F);
-                hSliderValueBMin = GUI.HorizontalSlider(new Rect(95, 105, 100, 30), hSliderValueB, 0.0F, 1.0F);
-                hSliderValueAMin = GUI.HorizontalSlider(new Rect(95, 135, 100, 30), hSliderValueA, 0.0F, 1.0F);
+            if (hSliderValueR > hSliderValueAMin)
+            {
+                hSliderValueRMax = hSliderValueR;
             }
+            if (hSliderValueG > hSliderValueAMin)
+            {
+                hSliderValueGMax = hSliderValueG;
+            }
+            if (hSliderValueB > hSliderValueAMin)
+            {
+                hSliderValueBMax = hSliderValueB;
+            }
+            if (hSliderValueA > hSliderValueAMin)
+            {
+                hSliderValueAMax = hSliderValueA;
+            }
+        }
         if (GUI.Button(new Rect(60, 300, 65, 30), "Save"))
         {
             saveColor();
