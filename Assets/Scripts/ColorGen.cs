@@ -12,6 +12,21 @@ public class ColorGen : MonoBehaviour {
     private int addOrminus;
     public int saveNum;
 
+    public int x;
+
+    public float RangeRMax;
+    public float RangeRMin;
+
+    public float RangeBMax;
+    public float RangeBMin;
+
+    public float RangeGMax;
+    public float RangeGMin;
+
+    public float RangeAMax;
+    public float RangeAMin;
+
+
     public float hSliderValueR ;
     public float hSliderValueG ;
     public float hSliderValueB ;
@@ -27,9 +42,42 @@ public class ColorGen : MonoBehaviour {
     public float hSliderValueBMin;
     public float hSliderValueAMin;
 
+    public float hSliderValueRSum=0;
+    public float hSliderValueGSum=0;
+    public float hSliderValueBSum=0;
+    public float hSliderValueASum=0;
+
+    public float hSliderValueRBACK;
+    public float hSliderValueGBACK;
+    public float hSliderValueBBACK;
+    public float hSliderValueABACK;
+
     void Start()
     {
         head = GetComponent<ParticleSystem>();
+        x = 1;
+        do
+        {
+            hSliderValueR = Random.Range(.05f, 1.0f);
+            hSliderValueG = Random.Range(.05f, 1.0f);
+            hSliderValueB = Random.Range(.05f, 1.0f);
+            hSliderValueA = Random.Range(.05f, .5f);
+
+
+            hSliderValueRSum += hSliderValueR;
+            hSliderValueGSum += hSliderValueG;
+            hSliderValueBSum += hSliderValueB;
+            hSliderValueASum += hSliderValueA;
+
+            x++;
+        } while (x != 5);
+
+        hSliderValueR = hSliderValueRSum/ (Random.Range(3.5f, 5.5f));
+        hSliderValueG = hSliderValueRSum / (Random.Range(3.5f, 5.5f));
+        hSliderValueB = hSliderValueRSum / (Random.Range(3.5f, 5.5f));
+        hSliderValueA = hSliderValueRSum / 8.5f;
+
+
     }
 
     void Update()
@@ -97,14 +145,305 @@ public class ColorGen : MonoBehaviour {
     }
     void AI()
     {
-       
+     RangeRMax= hSliderValueRMax;
+     RangeRMin= hSliderValueRMin;
+
+     RangeBMax= hSliderValueGMax;
+     RangeBMin= hSliderValueGMin;
+
+     RangeGMax= hSliderValueBMax;
+     RangeGMin= hSliderValueBMin;
+
+     RangeAMax= hSliderValueAMax;
+     RangeAMin= hSliderValueAMin;
+
+        //R
+        if (hSliderValueR > hSliderValueG)
+        {
+            if (RangeRMax > RangeRMax +.25f)
+            {
+                RangeRMax += .25f;
+            }
+           
+                
+
+            if (RangeGMin < RangeGMin - .1f)
+            {
+                RangeGMin -= .1f;
+            }
+            if (RangeBMin < RangeBMin - .1f)
+            {
+                RangeBMin -= .1f;
+            }
+            if (RangeAMin < RangeAMin - .1f)
+            {
+                RangeAMin -= .1f;
+            }
+        }
+        if (hSliderValueR > hSliderValueB)
+        {
+            if (RangeRMax > RangeRMax + .25f)
+            {
+                RangeRMax += .25f;
+            }
+
+            
+
+            if (RangeGMin < RangeGMin - .1f)
+            {
+                RangeGMin -= .1f;
+            }
+            if (RangeBMin < RangeBMin - .1f)
+            {
+                RangeBMin -= .1f;
+            }
+            if (RangeAMin < RangeAMin - .1f)
+            {
+                RangeAMin -= .1f;
+            }
+        }
+        if (hSliderValueR > hSliderValueA)
+        {
+            if (RangeRMax > RangeRMax + .25f)
+            {
+                RangeRMax += .25f;
+            }
+
+            
+
+            if (RangeGMin < RangeGMin - .1f)
+            {
+                RangeGMin -= .1f;
+            }
+            if (RangeBMin < RangeBMin - .1f)
+            {
+                RangeBMin -= .1f;
+            }
+            if (RangeAMin < RangeAMin - .1f)
+            {
+                RangeAMin -= .1f;
+            }
+        }
+
+        //G
+        if (hSliderValueG> hSliderValueR)
+        {
+            if (RangeGMax > RangeGMax + .25f)
+            {
+                RangeGMax += .25f;
+            }
+
+           
+
+            if (RangeRMin < RangeRMin - .1f)
+            {
+                RangeRMin -= .1f;
+            }
+            if (RangeBMin < RangeBMin - .1f)
+            {
+                RangeBMin -= .1f;
+            }
+            if (RangeAMin < RangeAMin - .1f)
+            {
+                RangeAMin -= .1f;
+            }
+        }
+        if (hSliderValueG > hSliderValueB)
+        {
+            if (RangeGMax > RangeGMax + .25f)
+            {
+                RangeGMax += .25f;
+            }
+
+            
+
+            if (RangeRMin < RangeRMin - .1f)
+            {
+                RangeRMin -= .1f;
+            }
+            if (RangeBMin < RangeBMin - .1f)
+            {
+                RangeBMin -= .1f;
+            }
+            if (RangeAMin < RangeAMin - .1f)
+            {
+                RangeAMin -= .1f;
+            }
+        }
+        if (hSliderValueG > hSliderValueA)
+        {
+            if (RangeGMax > RangeGMax + .25f)
+            {
+                RangeGMax += .25f;
+            }
+
+            
+
+            if (RangeRMin < RangeRMin - .1f)
+            {
+                RangeRMin -= .1f;
+            }
+            if (RangeBMin < RangeBMin - .1f)
+            {
+                RangeBMin -= .1f;
+            }
+            if (RangeAMin < RangeAMin - .1f)
+            {
+                RangeAMin -= .1f;
+            }
+        }
+
+        //B
+        if (hSliderValueB > hSliderValueR)
+        {
+            if (RangeBMax > RangeBMax + .25f)
+            {
+                RangeBMax += .25f;
+            }
+
+            
+
+            if (RangeRMin < RangeRMin - .1f)
+            {
+                RangeRMin -= .1f;
+            }
+            if (RangeGMin < RangeGMin - .1f)
+            {
+                RangeGMin -= .1f;
+            }
+            if (RangeAMin < RangeAMin - .1f)
+            {
+                RangeAMin -= .1f;
+            }
+        }
+        if (hSliderValueB > hSliderValueG)
+        {
+            if (RangeBMax > RangeBMax + .25f)
+            {
+                RangeBMax += .25f;
+            }
+
+            
+
+            if (RangeRMin < RangeRMin - .1f)
+            {
+                RangeRMin -= .1f;
+            }
+            if (RangeGMin < RangeGMin - .1f)
+            {
+                RangeGMin -= .1f;
+            }
+            if (RangeAMin < RangeAMin - .1f)
+            {
+                RangeAMin -= .1f;
+            }
+        }
+        if (hSliderValueB > hSliderValueA)
+        {
+            if (RangeBMax > RangeBMax + .25f)
+            {
+                RangeBMax += .25f;
+            }
+
+            
+
+            if (RangeRMin < RangeRMin - .1f)
+            {
+                RangeRMin -= .1f;
+            }
+            if (RangeGMin < RangeGMin - .1f)
+            {
+                RangeGMin -= .1f;
+            }
+            if (RangeAMin < RangeAMin - .1f)
+            {
+                RangeAMin -= .1f;
+            }
+        }
+
+        //A
+        if (hSliderValueB > hSliderValueR)
+        {
+            if (RangeAMax > RangeAMax + .25f)
+            {
+                RangeAMax += .25f;
+            }
+
+            
+
+            if (RangeRMin < RangeRMin - .1f)
+            {
+                RangeRMin -= .1f;
+            }
+            if (RangeGMin < RangeGMin - .1f)
+            {
+                RangeGMin -= .1f;
+            }
+            if (RangeBMin < RangeBMin - .1f)
+            {
+                RangeBMin -= .1f;
+            }
+        }
+        if (hSliderValueB > hSliderValueG)
+        {
+            if (RangeAMax > RangeAMax + .25f)
+            {
+                RangeAMax += .25f;
+            }
+
+            
+
+            if (RangeRMin < RangeRMin - .1f)
+            {
+                RangeRMin -= .1f;
+            }
+            if (RangeGMin < RangeGMin - .1f)
+            {
+                RangeGMin -= .1f;
+            }
+            if (RangeBMin < RangeBMin - .1f)
+            {
+                RangeBMin -= .1f;
+            }
+        }
+        if (hSliderValueA > hSliderValueB)
+        {
+            if (RangeAMax > RangeAMax + .25f)
+            {
+                RangeAMax += .25f;
+            }
+
+            
+
+            if (RangeRMin < RangeRMin - .1f)
+            {
+                RangeRMin -= .1f;
+            }
+            if (RangeGMin < RangeGMin - .1f)
+            {
+                RangeGMin -= .1f;
+            }
+            if (RangeBMin < RangeBMin - .1f)
+            {
+                RangeBMin -= .1f;
+            }
+        }
+
+        
+        hSliderValueR = Random.Range(RangeRMin, RangeRMax);
+        hSliderValueG = Random.Range(RangeGMin, RangeGMax);
+        hSliderValueB = Random.Range(RangeBMin, RangeBMax);
+        hSliderValueA = Random.Range(RangeAMin, RangeAMax);
+
 
     }
 
     void mutation()
     {
+        
         random = Random.Range(1, 101);
         //Debug.Log("Mute Func::" +random);
+
         if (random <= 20)
          
         {
@@ -275,6 +614,10 @@ public class ColorGen : MonoBehaviour {
       
 
         
+    }
+    void backColor()
+    {
+
     }
 }
     
